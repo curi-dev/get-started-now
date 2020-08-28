@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './assets/styles/main.css';
+import './assets/styles.css';
 
 import backgroundImage from './assets/images/main-header.jpg'
 

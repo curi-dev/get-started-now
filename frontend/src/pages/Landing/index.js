@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
-import PageHeader from '../../components/PageHeader/PageHeader'
+import PageHeader from '../../components/PageHeader/PageHeader';
+import ContentBox from '../../components/ContentBox/ContentBox';
 
 import './assets/styles.css';
 
@@ -12,16 +13,30 @@ import explorePhoto from './assets/images/walking-people.jpg';
 
 
 export default function Landing() {
-
-    const [ tripList, setTripList ] = useState([]);
-
-
-    async function handleAddTrip() {
-        const response = await api.post('/trips');
-        const newAddedTrip = response.data;
     
-        setTripList([...tripList, newAddedTrip])
-    }
+    const [ continent, setContinent ] = useState('');
+    const [ origin, setOrigin ] = useState('');
+    const [ destination, setDestination ] = useState('');
+    const [ photo, setPhoto ] = useState('');
+    const [ comments, setComments ] = useState('');
+
+
+    function handleCreateTrip() {  // Capturing the erro on the top of the stack. Improve that.
+        try {
+            api.post('/trips', {
+                continent,
+                origin,
+                destination,
+                photo,
+                comments
+            });
+            
+            alert('Congratulations! Registry confirmed.')
+        } catch (error) {
+            alert('Registry not conluded. Try it again.')
+        }
+    };
+
 
     return (
     
@@ -30,51 +45,43 @@ export default function Landing() {
             
             <main>
                 <div className="page-content">
-
-                    <div className='inner-container' id='share'>
-                        <img src={sharePhoto} alt=""/>
-                        <div className="text-container">
-                            <h2>Share your routes.</h2>
-                            <span>
-                                Come on. Thats the spirit of travelling:
-                                sharing your best experiences is gonna make you 
-                                feel better and happier. Show the unknow world
-                                to this big traveller community. 
-                            </span>
-                            <Link to="#modal">Share</Link> 
-                        </div>    
-                    </div>    
-
-                    <div className='inner-container' id='discover'>
-                        <div className="text-container">
-                            <h2>Discover new routes.</h2>
-                            <span>
-                                Come on. Thats the spirit of travelling:
-                                sharing your best experiences is gonna make you 
-                                feel better and happier. Show the unknow world
-                                to this big traveller community. 
-                            </span>
-                            <Link to="/discover">Discover</Link>
-                        </div>
-                        <img src={discoverPhoto} alt="Discover routes"/>
-                    </div>
-
-                    <div className='inner-container' id='explore'>
-                        <img src={explorePhoto} alt=""/>
-                        <div className="text-container">
-                            <h2>Explore your dreams.</h2>
-                            <span>
-                                Come on. Thats the spirit of travelling:
-                                sharing your best experiences is gonna make you 
-                                feel better and happier. Show the unknow world
-                                to this big traveller community. 
-                            </span>
-                            <Link to="/explore">Explore</Link>
-                        </div>
-                    </div>
+                    <ContentBox 
+                    id='share'
+                    photo={sharePhoto}
+                    title='Share your routes.'
+                    text='Come on. Thats the spirit of travelling:
+                    sharing your best experiences is gonna make you 
+                    feel better and happier. Show the unknow world
+                    to this big traveller community. '
+                    buttonText='Share'
+                    buttonAction='#modal'
+                    />
+                    <ContentBox 
+                    id='discover'
+                    photo={discoverPhoto}
+                    title='Discover new routes.'
+                    text='Come on. Thats the spirit of travelling:
+                    sharing your best experiences is gonna make you 
+                    feel better and happier. Show the unknow world
+                    to this big traveller community. '
+                    buttonText='Discover'
+                    buttonAction='/discover'
+                    />
+                    <ContentBox 
+                    id='explore'
+                    photo={explorePhoto}
+                    title='Explore your dreams.'
+                    text='Come on. Thats the spirit of travelling:
+                    sharing your best experiences is gonna make you 
+                    feel better and happier. Show the unknow world
+                    to this big traveller community. '
+                    buttonText='Explore'
+                    buttonAction='/explore'
+                    />
                 </div>
             </main>    
             
+            <br/><br/><br/><br/><br/><br/><br/><br/>
             <br/><br/><br/><br/><br/><br/><br/><br/>
             <br/><br/><br/><br/><br/><br/><br/><br/>
             <br/><br/><br/><br/><br/><br/><br/><br/>
@@ -107,9 +114,9 @@ export default function Landing() {
 
 
             <div className="modal" id="modal" tabindex="-1">
-                <Link to="#" className="modal__overlay" aria-label="Fechar"></Link>
+                <a href="#" className="modal__overlay" aria-label="Fechar"></a>
                 <div className="modal__content">
-                    <Link to="#" className="modal__close" aria-label="Fechar">x</Link>
+                    <a href="#" className="modal__close" aria-label="Fechar">x</a>
                     <div className='add-container'>
                         <header>
                             <h2>Tell us about your Trip.</h2>
@@ -119,33 +126,64 @@ export default function Landing() {
                             <form action="" id="form">
                                 <div className="input-block">
                                     <label htmlFor="continent">Continent</label>
-                                    <input id='continent' type="text"/>
+                                    <input 
+                                    id='continent' 
+                                    type="text"
+                                    value={continent}
+                                    onChange={(e) => setContinent(e.target.value)}
+                                    />
                                 </div>
 
                                 <div className="input-block">
                                     <label htmlFor="origin">Origin</label>
-                                    <input id='origin' type="text"/>
+                                    <input 
+                                    id='origin' 
+                                    type="text"
+                                    value={origin}
+                                    onChange={(e) => setOrigin(e.target.value)}
+                                    />
                                 </div>
 
                                 <div className="input-block">
                                     <label htmlFor="destination">Destination</label>
-                                    <input id='destination' type="text"/>
+                                    <input 
+                                    id='destination' 
+                                    type="text"
+                                    value={destination}
+                                    onChange={(e) => setDestination(e.target.value)}
+                                    />
                                 </div>
 
                                 <div className="input-block">
-                                    <label htmlFor="destination">Choose a photo</label>
-                                    <input id='destination' type="text"/>
+                                    <label htmlFor="photo">Choose a photo</label>
+                                    <input 
+                                    id='photo' 
+                                    type='url'
+                                    value={photo}
+                                    onChange={(e) => setPhoto(e.target.value)}
+                                    />
                                 </div>
 
                                 <div className="input-block" id='select-block'>
-                                    <label htmlFor="observations">Talk about</label>
-                                    <textarea id='observation' type="text"/>
+                                    <label htmlFor="comments">Say something</label>
+                                    <textarea 
+                                    id='comments' 
+                                    type="text"
+                                    value={comments}
+                                    onChange={(e) => setComments(e.target.value)}
+                                    />
                                 </div>
 
                             </form>
                         </div>
                         <div className="button-container">
-                            <button form='form' type='button' onClick={handleAddTrip}>Send your route</button>
+                            <button 
+                            form='form' 
+                            type='button'
+                            onClick={handleCreateTrip}
+                            >
+                                Send your route
+                            </button>
                         </div>    
                     </div>
                 </div>
