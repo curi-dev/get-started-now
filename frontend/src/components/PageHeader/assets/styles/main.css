@@ -1,0 +1,74 @@
+
+.page-header {
+    width: 100%;
+    height: 520px;
+
+    padding: 15rem 4rem;
+    background-position-y: 20%;
+    background-size: cover;
+
+    border-bottom-left-radius: 20rem;
+    border-bottom-right-radius: 20rem;
+}
+
+.page-header menu {
+    width: 95%;
+
+    position: absolute;
+    top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.page-header menu ul {
+    list-style: none;
+    display: flex;
+}
+
+.page-header menu ul li {
+    margin-right: 1.5rem;
+    padding: .7rem .7rem;
+
+    font: 300 1.6rem Poppins;
+    color: rgb(182, 0, 55);
+    border: 1px solid rgb(182, 0, 55);
+    border-radius: 2.5rem;
+}
+
+.page-header .header-content {
+    margin-left: 7rem;
+
+    font-family: Montserrat;
+    color: white;
+
+    line-height: 7.8rem;
+}
+
+.page-header .header-content span {
+    color: rgb(182, 0, 55);
+}
+
+.page-header .header-content h1 {
+    font-size: 58pt;
+}
+
+.page-header .header-content h3 {
+    font: 400 18pt sans-serif;
+}
+
+.page-header .header-content button {
+    width: 30%;
+    height: 50px;
+    margin-top: 2.7rem;
+
+    font: 300 2.6rem Poppins;
+
+    cursor: pointer;
+    
+    background-color: rgb(182, 0, 55);
+    color: white;
+
+    outline: none;
+    border: none;
+    border-radius: .7rem;
+}
