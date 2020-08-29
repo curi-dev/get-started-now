@@ -1,0 +1,28 @@
+:root {
+    font-size: 60%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+html,
+body,
+#page-landing {
+    width: 100vw;
+    height: 100%;
+}
+
+#page-landing {
+    background-color: rgb(201, 197, 197);
+}
+
+#page-landing main .page-content {
+    width: 65%;
+    max-width: 60%;
+    height: 700px;
+    margin: -37px auto;
+};

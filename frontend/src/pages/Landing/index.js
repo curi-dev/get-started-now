@@ -1,37 +1,57 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import api from '../../services/api';
 
 import PageHeader from '../../components/PageHeader/PageHeader';
 import ContentBox from '../../components/ContentBox/ContentBox';
+import Footer from '../../components/Footer/Footer';
 
 import './assets/styles.css';
 
 import sharePhoto from './assets/images/traveller.jpg';
 import discoverPhoto from './assets/images/jeep-on-river.jpg'
 import explorePhoto from './assets/images/walking-people.jpg';
+import backgroundImage from './assets/images/main-header.jpg';
+import modalBackground from './assets/images/form-background-small.jpg';
+
+import quitIcon from './assets/images/icons/quit.png';
 
 
 export default function Landing() {
     
-    const [ continent, setContinent ] = useState('');
     const [ origin, setOrigin ] = useState('');
     const [ destination, setDestination ] = useState('');
+    const [ vehicleType, setVehicleTYpe ] = useState('');
+    const [ gasolineCost, setGasolineCost ] = useState('');
+    const [ totalCost, setTotalCost ] = useState('');
     const [ photo, setPhoto ] = useState('');
     const [ comments, setComments ] = useState('');
 
+    const history = useHistory();
 
     function handleCreateTrip() {  // Capturing the erro on the top of the stack. Improve that.
         try {
-            api.post('/trips', {
-                continent,
+            api.post('trips', {
                 origin,
                 destination,
+                vehicleType,
+                gasolineCost,
+                totalCost,
                 photo,
                 comments
             });
-            
-            alert('Congratulations! Registry confirmed.')
+
+            setOrigin('');
+            setDestination('');
+            setVehicleTYpe('');
+            setGasolineCost('');
+            setTotalCost('');
+            setPhoto('');
+            setComments('');
+
+            setTimeout(() => {
+                history.push('/registered');
+            }, 1500)
         } catch (error) {
             alert('Registry not conluded. Try it again.')
         }
@@ -41,7 +61,13 @@ export default function Landing() {
     return (
     
         <div id="page-landing"> 
-            <PageHeader />
+            <PageHeader background={backgroundImage}>
+                <div className='header-content'>
+                    <h1><span>Get</span> started <br/>now.</h1>
+                    <h3>A new tribe for <i>off-roaders</i></h3>
+                    <button type='button'>Register</button>
+                </div>
+            </ PageHeader>
             
             <main>
                 <div className="page-content">
@@ -53,9 +79,10 @@ export default function Landing() {
                     sharing your best experiences is gonna make you 
                     feel better and happier. Show the unknow world
                     to this big traveller community. '
-                    buttonText='Share'
-                    buttonAction='#modal'
-                    />
+                    >
+                        <a href='#modal' className='btn-do'>Share</a> 
+                    </ ContentBox>
+                    
                     <ContentBox 
                     id='discover'
                     photo={discoverPhoto}
@@ -64,9 +91,10 @@ export default function Landing() {
                     sharing your best experiences is gonna make you 
                     feel better and happier. Show the unknow world
                     to this big traveller community. '
-                    buttonText='Discover'
-                    buttonAction='/discover'
-                    />
+                    >
+                        <Link to='/discover' className='btn-do'>Discover</Link>     
+                    </ ContentBox>
+                    
                     <ContentBox 
                     id='explore'
                     photo={explorePhoto}
@@ -75,9 +103,9 @@ export default function Landing() {
                     sharing your best experiences is gonna make you 
                     feel better and happier. Show the unknow world
                     to this big traveller community. '
-                    buttonText='Explore'
-                    buttonAction='/explore'
-                    />
+                    >
+                        <Link to='/explore' className='btn-do'>Explore</Link>     
+                    </ ContentBox>
                 </div>
             </main>    
             
@@ -88,35 +116,14 @@ export default function Landing() {
             <br/><br/><br/><br/><br/><br/><br/><br/>
             <br/><br/><br/><br/><br/><br/><br/><br/>
             
-            <footer>
-                <div className="footer-container">
-                    <div className="info-container container-children">
-                        <ul>
-                            <li>About us</li>
-                            <li>Contact us</li>
-                            <li>FAQ</li>
-                            <li>Newsletter</li>
-                        </ul>
-                    </div>
-                    <div className="logo-container container-children">
-                        <h1><span>G</span>SN</h1>
-                        <span>&copy; Todos os direitos reservados.</span>
-                    </div>
-                    <div className="social-media-container container-children">
-                        <ul>    
-                            <li>INSTAGRAM<img src="" alt=""/></li>
-                            <li>TWITTER<img src="" alt=""/></li>
-                            <li>FACEBOOK<img src="" alt=""/></li>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
 
-
-            <div className="modal" id="modal" tabindex="-1">
+            <div className="modal" id="modal" tabIndex="-1">
                 <a href="#" className="modal__overlay" aria-label="Fechar"></a>
-                <div className="modal__content">
-                    <a href="#" className="modal__close" aria-label="Fechar">x</a>
+                <div className="modal__content" style={{ backgroundImage: `url(${modalBackground})`}}>
+                    <a href="#" className="modal__close" aria-label="Fechar">
+                        <img src={quitIcon} alt="Quit"/>
+                    </a>
                     <div className='add-container'>
                         <header>
                             <h2>Tell us about your Trip.</h2>
@@ -124,15 +131,6 @@ export default function Landing() {
                         </header>
                         <div className="form-container">
                             <form action="" id="form">
-                                <div className="input-block">
-                                    <label htmlFor="continent">Continent</label>
-                                    <input 
-                                    id='continent' 
-                                    type="text"
-                                    value={continent}
-                                    onChange={(e) => setContinent(e.target.value)}
-                                    />
-                                </div>
 
                                 <div className="input-block">
                                     <label htmlFor="origin">Origin</label>
@@ -151,6 +149,36 @@ export default function Landing() {
                                     type="text"
                                     value={destination}
                                     onChange={(e) => setDestination(e.target.value)}
+                                    />
+                                </div>
+
+                                <div className="input-block">
+                                    <label htmlFor="vehicle">Vehicle type</label>
+                                    <input 
+                                    id='vehicle' 
+                                    type="text"
+                                    value={vehicleType}
+                                    onChange={(e) => setVehicleTYpe(e.target.value)}
+                                    />
+                                </div>
+
+                                <div className="input-block">
+                                    <label htmlFor="gasoline">Gasoline cost</label>
+                                    <input 
+                                    id='gasoline' 
+                                    type="number"
+                                    value={gasolineCost}
+                                    onChange={(e) => setGasolineCost(e.target.value)}
+                                    />
+                                </div>
+
+                                <div className="input-block">
+                                    <label htmlFor="total">Total cost</label>
+                                    <input 
+                                    id='total' 
+                                    type="number"
+                                    value={totalCost}
+                                    onChange={(e) => setTotalCost(e.target.value)}
                                     />
                                 </div>
 

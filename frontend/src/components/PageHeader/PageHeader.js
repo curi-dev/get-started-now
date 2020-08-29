@@ -1,31 +1,31 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './assets/styles.css';
 
-import backgroundImage from './assets/images/main-header.jpg'
+import contactIcon from './assets/images/icons/mail.png';
+import userIcon from './assets/images/icons/user.png';
+import searchIcon from './assets/images/icons/search.png';
 
-function CarrouselHeader() {
+function PageHeader({ background, children }) {
     
     return (
-        <header className='page-header' style={{ backgroundImage: `url(${backgroundImage})`}}>
+        <header className='page-header' style={{ backgroundImage: `url(${background})`}}>
             <menu>
                 <ul>
-                    <li>Home</li>
-                    <li>Check-in</li>
-                    <li>Gallery</li>
+                    <li><Link to='/' className='link'>Home</Link></li>
+                    <li><Link className='link'>Check-in</Link></li>
+                    <li><Link className='link'>Favourites</Link></li>
                 </ul>
-                <ul>
-                    <li>My photo</li>
-                    <li>Profile</li>
-                </ul>
+                <div className="icons-container">
+                    <Link><img src={contactIcon} alt="Contact"/></Link>
+                    <Link><img src={userIcon} alt="User"/></Link>  
+                    <Link><img src={searchIcon} alt="Search"/></Link>  
+                </div>
             </menu>
-            <div className='header-content'>
-                <h1><span>Get</span> Started <br/>Now.</h1>
-                <h3>A tribe for <i>off-roaders</i></h3>
-                <button type='button'>Register</button>
-            </div>
+            { children }
         </header>
     );
 };
 
-export default CarrouselHeader;
+export default PageHeader;

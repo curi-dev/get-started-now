@@ -1,38 +1,40 @@
-:root {
-    font-size: 60%;
+.page-header .header-content {
+    margin-left: 7rem;
+
+    font-family: Montserrat;
+    color: white;
+
+    line-height: 7.8rem;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: 0;
+.page-header .header-content span {
+    color: rgb(182, 0, 55);
 }
 
-html,
-body,
-#page-landing {
-    width: 100vw;
-    height: 100%;
+.page-header .header-content h1 {
+    font-weight: 800;
+    font-size: 58pt;
 }
 
-#page-landing {
-    background-color: rgb(201, 197, 197);
+.page-header .header-content h3 {
+    font: 400 18pt sans-serif;
 }
 
-#page-landing main .page-content {
-    width: 60%;
-    max-width: 60%;
-    height: 700px;
-    margin: -37px auto;
-}
+.page-header .header-content button {
+    width: 30%;
+    height: 50px;
+    margin-top: 2.7rem;
 
-.page-content .inner-container {
-    width: 100%;
+    font: 300 2.6rem Poppins;
+
+    cursor: pointer;
     
-    padding: 2rem 2rem;
-    display: flex;
-    justify-content: space-around;
+    background-color: rgb(182, 0, 55);
+    color: white;
+
+    outline: none;
+    border: none;
+    border-radius: .7rem;
 }
 
 .page-content #share {
@@ -48,123 +50,6 @@ body,
 .page-content #explore {
     background-color: rgb(132, 145, 182);
 }
-
-.page-content .inner-container img {
-    width: 300px;
-    height: 300px;
-    margin: 0 1.5rem;
-
-    border-radius: 50%;
-}
-
-.inner-container .text-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-
-    color: white;
-}
-
-.inner-container .text-container h2 {
-    font: 500 23pt Montserrat;
-    margin-bottom: 1rem;
-}
-
-.inner-container .text-container span {
-    font-size: 14pt;
-    font-family: sans-serif;
-    color: rgb(201, 197, 197);
-}
-
-.inner-container .text-container h2::before {
-    content: '';
-    width: 30%;
-    border: 1px solid white;
-
-    margin-right: 1rem;
-}
-
-.inner-container .text-container button {
-    width: 120px;
-    height: 50px;
-    margin-top: 1.4rem;
-    border: none;
-    outline: none;
-    font: 500 1.6rem Poppins;
-}
-
-.inner-container .text-container a {
-    width: 120px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-top: 1.4rem;
-    border: none;
-    outline: none;
-    text-decoration: none;
-
-    background-color: white;
-    color: black;
-    font: 500 1.6rem Poppins;
-}
-
-/* Here is the footer of the homepage */
-
-.footer-container {
-    width: 100%;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    background-color: black;
-
-    font-size: 14pt;
-    font-family: sans-serif;
-    color: rgb(201, 197, 197);    
-}
-
-.footer-container .container-children {
-    width: 33%;
-}
-
-.footer-container .info-container {
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-}
-
-.footer-container  ul {
-    list-style: none;
-}
-
-.footer-container .logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.footer-container .logo-container h1 {
-    font: 700 60pt Montserrat;
-}
-
-.footer-container .logo-container h1 span {
-    color: rgb(182, 0, 55);
-}
-
-.footer-container .social-media-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
 
 /* Modal window */
 
@@ -199,7 +84,6 @@ cursor: default;
 .modal__content {
 min-width: 480px;
 position: relative;
-background-color: rgb(99, 123, 187);
 padding: 2rem;
 }
  
@@ -211,6 +95,11 @@ top: 0;
 right: 0;
 padding: 0 0.5rem;
 display: inline-block;
+}
+
+.modal__close img {
+    width: 25px;
+    height: 25px;
 }
 
 .add-container {
@@ -244,7 +133,7 @@ display: inline-block;
 
 .add-container .form-container {
     width: 80%;
-    line-height: 3.9rem;
+    line-height: 4.5rem;
 }
 
 .form-container .input-block {
@@ -261,21 +150,27 @@ display: inline-block;
 
 .form-container .input-block input {
     width: 230px;
-    height: 29px;
+    height: 35px;
 
     outline: none;
     border: none;
     border-radius: .4rem;
+    padding: 1.2rem;
+
+    background-color: rgba(201, 197, 197, 0.253);
 }
 
 .form-container .input-block textarea {
     width: 230px;
     height: 123px;
     margin-top: 2.5rem;
+    padding: 1.2rem;
 
     outline: none;
     border: none;
     border-radius: .4rem;
+
+    background-color: rgba(201, 197, 197, 0.253);
 }
 
 .form-container #select-block {

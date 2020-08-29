@@ -1,0 +1,59 @@
+.inner-container {
+    width: 100%;
+    padding: 2rem 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.inner-container img {
+    width: 300px;
+    height: 300px;
+    margin: 0 1.5rem;
+
+    border-radius: 50%;
+}
+
+.inner-container .text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    color: white;
+}
+
+.inner-container .text-container h2 {
+    font: 500 23pt Montserrat;
+    margin-bottom: 1rem;
+}
+
+.inner-container .text-container span {
+    font-size: 14pt;
+    font-family: sans-serif;
+    color: rgb(201, 197, 197);
+}
+
+.inner-container .text-container h2::before {
+    content: '';
+    width: 30%;
+    border: 1px solid white;
+
+    margin-right: 1rem;
+}
+
+.inner-container .text-container .btn-do {
+    width: 120px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 1.4rem;
+    border: none;
+    outline: none;
+    text-decoration: none;
+
+    background-color: white;
+    color: black;
+    font: 500 1.6rem Poppins;
+}
