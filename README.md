@@ -21,6 +21,7 @@ Plataforma para amantes de viagens off-road desenvolvida com ReactJS e Nodejs.
 
 - React :heavy_check_mark:
 - Nodejs :heavy_check_mark:
+- API Rest :heavy_check_mark:
 - Expressjs :heavy_check_mark:
 - Hooks :heavy_check_mark:
 - Programação funcional :heavy_check_mark:
