@@ -25,7 +25,16 @@ Plataforma para amantes de viagens off-road desenvolvida com ReactJS e Nodejs.
 - Hooks :heavy_check_mark:
 - Programação funcional :heavy_check_mark:
 
+<h3>Layout</h3>
 
-<h3>Layout - Aplicação em uso</h3>
+![gsn1](https://user-images.githubusercontent.com/69495523/92611338-108ad300-f28f-11ea-8e0c-41d80368bded.png)
+
+![gsn2](https://user-images.githubusercontent.com/69495523/92611345-12549680-f28f-11ea-8ed3-d7189eaf37ed.png)
+
+![gsn3](https://user-images.githubusercontent.com/69495523/92611348-12549680-f28f-11ea-8928-f4aa1746580e.png)
+
+![gsn4](https://user-images.githubusercontent.com/69495523/92611350-12ed2d00-f28f-11ea-9c36-c864c6d52644.png)
+
+<h3>Vídeo da aplicação</h3>
 
 https://youtu.be/f-T9bTwQv20
